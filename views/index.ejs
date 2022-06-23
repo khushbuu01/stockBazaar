@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockBazaar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/views/css/styles.css"/>
+</head>
+<body>
+    
+    <%- include('partials/header.ejs') %>
+    
+    <section class="home" id="home">
+        <div class="content"><br/>
+            <h3><span>Welcome</span> to Stock Bazaar</h3>
+            <p>A stock market, equity market, or share market is the aggregation of buyers and sellers of stocks (also called shares), which represent ownership claims on businesses</p>
+            <% if(!req.user){%>
+                <a href="/login" class="btn">View Stocks</a>
+            <% } else {%>
+                <a href="/stocks" class="btn">View Stocks</a>
+            <% } %>
+        </div>
+
+        <div class="image">
+            <img src="/views/images/undraw_bear_market_ania.svg" alt="hero-images"/>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <h1 class="heading">Our Features</h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="/views/images/undraw_News_re_6uub.svg" alt=""/>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <a href="news" class="btn">Browse News</a>
+            </div>
+
+            <div class="box">
+                <img src="/views/images/undraw_Stock_prices_re_js33.svg" alt=""/>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                <% if(!req.user){%>
+                    <a href="/login" class="btn">View Stocks</a>
+                <% } else {%>
+                    <a href="/stocks" class="btn">View Stocks</a>
+                <% } %>
+            </div>   
+        </div>
+    </section>
+
+    <%- include('partials/footer.ejs') %>
+    
+</body>
+</html>

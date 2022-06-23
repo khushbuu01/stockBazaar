@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockBazaar | Stocks</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/views/css/styles.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <style>
+        a {
+            text-decoration: none;
+        }
+        table{
+            font-size: 1.5rem;
+            background: #fff;
+        }
+        thead {
+            background-color: #0047b4;
+        }
+        thead th{
+            background-color: #0047b4;
+            font-family: "Roboto", sans-serif;
+            color: #fff;
+            letter-spacing: 0.1rem;
+        }
+        tbody td{
+            font-family: "Roboto", sans-serif;
+            text-transform: none;
+            font-size: 1.8rem;
+            font-weight: 500;
+        }
+        
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js" integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js" integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/" crossorigin="anonymous"></script>
+
+</head>
+<body>
+                
+    <%- include('partials/header.ejs') %>
+
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="table-responsive-sm">
+                    <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search by sector..">
+                    <table class="table table-hover table-sm table-striped table-condensed table-bordered">
+                        <thead>
+                            <tr>
+                            <th id="li" scope="col" class="text-center py-3">Name</th>
+                            <th scope="col" class="text-center py-3">Sector</th>
+                            <th scope="col" class="text-center py-3">Open</th>
+                            <th scope="col" class="text-center py-3">Close</th>
+                            <th scope="col" class="text-center py-3">High</th>
+                            <th scope="col" class="text-center py-3">Low</th>
+                            <th scope="col" class="text-center py-3">Volume</th>
+                            </tr>
+                        </thead>
+                        <tbody id="myUL">
+                            <% data.forEach(stock => { %>
+                                <tr >
+                                    <td><%= stock.Name %></td>
+                                    <td><%= stock.Sector %></td>
+                                    <td><%= stock.Open %></td>
+                                    <td><%= stock.Close %></td>
+                                    <td><%= stock.High %></td>
+                                    <td><%= stock.Low %></td>
+                                    <td><%= stock.Volume %></td>
+                                </tr>
+                            <% }) %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div> 
+    </div>
+
+    <%- include('partials/footer.ejs') %>
+
+</body>
+
+<script>
+    function myFunction() {
+        var input, filter, ul, li, a, i, txtValue;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        ul = document.getElementById("myUL");
+        console.log(ul)
+        li = ul.getElementsByTagName("tr");
+        console.log(li)
+        for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("td")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                li[i].style.display = "";
+            } else {
+                li[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+</html>

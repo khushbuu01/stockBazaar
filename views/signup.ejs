@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockBazaar | Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" type="text/css" href="/views/css/styles.css"/>
+    <style>
+        a {
+            text-decoration: none;
+        }
+        form p {
+            font-size: 1.7rem;
+            margin-top: 20px;
+        }
+        form p a {
+            color: #0047b4;
+        }
+        .transfer-section {
+            background: #fff;
+        }
+        .alert {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #f8d7da;
+            color: rgb(158, 9, 9);
+            border-radius: 10px;
+            font-size: 1.7rem;
+        }
+        .closebtn {
+            margin-left: 15px;
+            color: #666;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .closebtn:hover {
+            color: black;
+        }
+        .alert-suc{
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #d4edda;
+            color: rgb(14, 121, 4);
+            border-radius: 10px;
+            font-size: 1.7rem;
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/header.ejs') %>
+
+    <section class="contact transfer-section" id="contact">
+        <div class="image">
+            <img src="/views/images/undraw_secure_login_pdn4.svg" alt="messageUs"/>
+        </div>
+        
+        <form action="/login/signup" method="POST">
+            <h1 class="heading">Register</h1>
+            <%- include('partials/messages.ejs') %>
+            <div class="inputBox">
+                <input type="text" pattern="[a-zA-Z ]+" id="name" name="name" required>
+                <label for="name">Full Name</label>
+            </div>
+            <div class="inputBox">
+                <input type="text" id="contacts" pattern=".{10}"
+                name="contacts" required>
+                <label for="contacts">Contact Number</label>
+            </div>
+            <div class="inputBox">
+                <input type="email" id="email" name="email" required>
+                <label for="email">Email Address</label>
+            </div>
+            <div class="inputBox">
+                <input type="number" id="balance" max="1000000" name="balance" required>
+                <label for="balance">Account Balance</label>
+            </div>
+            
+            <div class="inputBox">
+                <input type="password" pattern=".{9,}" id="password" name="password" required>
+                <label for="password">Password</label>
+            </div>
+            <input type="submit" class="btn" value="Register">
+            <p>Already have an account? <a href="/login">Login</a></p>
+        </form>
+    </section>
+
+    <%- include('partials/footer.ejs') %>
+
+</body>
+</html>
