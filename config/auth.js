@@ -13,7 +13,7 @@ module.exports={
         }
         res.redirect('/');
     }
-    ,
+    // ,
     // portfolioRedirect: function(req,res,next){
     //     if(req.isAuthenticated()){
     //         res.redirect('/portfolio/req.user._id')
